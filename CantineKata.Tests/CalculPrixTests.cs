@@ -1,5 +1,5 @@
 using Xunit;
-using CantineKata.Core; // On importe ton projet principal
+using CantineKata.Core; 
 
 namespace CantineKata.Tests;
 
@@ -40,6 +40,7 @@ public class CalculPrixTests
         Ticket ticket = caisse.GenererTicket(client, repas);
 
         // Assert
-        Assert.Equal(0.40m, ticket.TotalAPayer); // 0.40€ pour le pain
+        Assert.Equal(0.40m, ticket.TotalAPayer); 
     }
+
 }

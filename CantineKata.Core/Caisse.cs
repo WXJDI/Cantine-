@@ -1,3 +1,5 @@
+using System;
+
 namespace CantineKata.Core;
 
 public class Caisse
@@ -20,7 +22,10 @@ public class Caisse
         {
             TypeProduit.Boisson => 1.00m,
             TypeProduit.Pain => 0.40m,
+            TypeProduit.PetiteSalade => 4.00m,
+            TypeProduit.GrandeSalade => 6.00m,
             _ => 0m 
+            
         };
     }
 }
