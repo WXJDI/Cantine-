@@ -12,8 +12,18 @@ public class Caisse
         {
             total += ObtenirPrixProduit(produit.Type);
         }
+        if (client.Type == TypeClient.Interne)
+        {
+            total -= 7.50m;
+        }
+
+        if (total < 0) 
+        {
+            total = 0m;
+        }
 
         return new Ticket(total);
+
     }
 
     private decimal ObtenirPrixProduit(TypeProduit type)
