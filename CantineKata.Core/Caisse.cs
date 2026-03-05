@@ -1,0 +1,26 @@
+namespace CantineKata.Core;
+
+public class Caisse
+{
+    public Ticket GenererTicket(Client client, Repas repas)
+    {
+        decimal total = 0m;
+
+        foreach (var produit in repas.Produits)
+        {
+            total += ObtenirPrixProduit(produit.Type);
+        }
+
+        return new Ticket(total);
+    }
+
+    private decimal ObtenirPrixProduit(TypeProduit type)
+    {
+        return type switch
+        {
+            TypeProduit.Boisson => 1.00m,
+            TypeProduit.Pain => 0.40m,
+            _ => 0m 
+        };
+    }
+}
