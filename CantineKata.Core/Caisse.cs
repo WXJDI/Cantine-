@@ -21,6 +21,11 @@ public class Caisse
             total -= 7.50m;
         }
 
+        else if (client.Type == TypeClient.Stagiaire)
+        {
+            total -= 10.00m;
+        }
+
         return new Ticket(Math.Max(0, total));
 
     }
@@ -30,10 +35,15 @@ public class Caisse
         return type switch
         {
             TypeProduit.Boisson => 1.00m,
+            TypeProduit.Fromage => 1.00m,
             TypeProduit.Pain => 0.40m,
             TypeProduit.PetiteSalade => 4.00m,
             TypeProduit.GrandeSalade => 6.00m,
-            _ => 0m 
+            TypeProduit.PortionFruit => 1.00m,
+            TypeProduit.Entree => 3.00m,  
+            TypeProduit.Plat => 6.00m,    
+            TypeProduit.Dessert => 3.00m, 
+            _ => 0m
             
         };
     }
