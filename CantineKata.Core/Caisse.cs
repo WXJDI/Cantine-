@@ -16,6 +16,21 @@ public class Caisse
         {
             total += ObtenirPrixProduit(produit.Type);
         }
+        int nbEntrees = repas.Produits.Count(p => p.Type == TypeProduit.Entree);
+        int nbPlats = repas.Produits.Count(p => p.Type == TypeProduit.Plat);
+        int nbDesserts = repas.Produits.Count(p => p.Type == TypeProduit.Dessert);
+        int nbPains = repas.Produits.Count(p => p.Type == TypeProduit.Pain);
+
+        // Le nombre de formules est limité par l'article le moins présent
+        int nbFormules = Math.Min(Math.Min(nbEntrees, nbPlats), Math.Min(nbDesserts, nbPains));
+
+        if (nbFormules > 0)
+        {
+            // Chaque formule fait économiser 2.40€ (12.40€ prix normal - 10.00€ prix formule)
+            total -= (2.40m * nbFormules);
+        }
+
+
         if (client.Type == TypeClient.Interne)
         {
             total -= 7.50m;

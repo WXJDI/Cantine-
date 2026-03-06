@@ -128,7 +128,8 @@ public class CalculPrixTests
         repas.AjouterProduit(new Produit("Salade cesar", TypeProduit.Entree));    
         repas.AjouterProduit(new Produit("Steak Frite de l'entrecote ", TypeProduit.Plat));      
         repas.AjouterProduit(new Produit("Glace vanille ", TypeProduit.Dessert));    
-        repas.AjouterProduit(new Produit("Baguette tradition ", TypeProduit.Pain));    
+        repas.AjouterProduit(new Produit("Baguette tradition ", TypeProduit.Pain));   
+ 
 
         var caisse = new Caisse();
 
