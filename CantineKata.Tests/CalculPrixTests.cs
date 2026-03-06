@@ -63,5 +63,22 @@ public class CalculPrixTests
         // 10 de total - 7.50 de prise en charge = 2.50 à payer
         Assert.Equal(2.50m, ticket.TotalAPayer); 
     }
+    [Fact]
+    public void GenererTicket_ClientVIP_NePayeRien()
+    {
+        // Arrange
+        var client = new Client(TypeClient.VIP);
+        var repas = new Repas();
+        repas.AjouterProduit(new Produit("Grande Salade", TypeProduit.GrandeSalade)); // 6€
+        repas.AjouterProduit(new Produit("Eau", TypeProduit.Boisson)); // 1€
+
+        var caisse = new Caisse();
+
+        // Act
+        Ticket ticket = caisse.GenererTicket(client, repas);
+
+   
+        Assert.Equal(0m, ticket.TotalAPayer); 
+    }
 
 }
