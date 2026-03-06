@@ -25,6 +25,11 @@ public class Caisse
         {
             total -= 10.00m;
         }
+        
+        else if (client.Type == TypeClient.Prestataire)
+        {
+            total -= 6.00m;
+        }
 
         return new Ticket(Math.Max(0, total));
 
