@@ -17,12 +17,7 @@ public class Caisse
             total -= 7.50m;
         }
 
-        if (total < 0) 
-        {
-            total = 0m;
-        }
-
-        return new Ticket(total);
+        return new Ticket(Math.Max(0, total));
 
     }
 
