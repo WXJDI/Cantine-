@@ -7,6 +7,10 @@ public class Caisse
     public Ticket GenererTicket(Client client, Repas repas)
     {
         decimal total = 0m;
+        if (client.Type == TypeClient.VIP)
+        {
+            return new Ticket(0m);
+        }
 
         foreach (var produit in repas.Produits)
         {
