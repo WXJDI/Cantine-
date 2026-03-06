@@ -81,4 +81,41 @@ public class CalculPrixTests
         Assert.Equal(0m, ticket.TotalAPayer); 
     }
 
+    [Fact]
+    public void GenererTicket_ClientPrestataire_Applique6EurosDeReduction()
+    {
+        // Arrange
+        var client = new Client(TypeClient.Prestataire);
+        var repas = new Repas();
+        repas.AjouterProduit(new Produit("Plat", TypeProduit.Plat)); // 6€
+        repas.AjouterProduit(new Produit("Boisson", TypeProduit.Boisson)); // 1€
+        var caisse = new Caisse();
+
+        // Act
+        Ticket ticket = caisse.GenererTicket(client, repas);
+
+        // Assert
+        // 7€ - 6€ de prise en charge = 1€
+        Assert.Equal(1.00m, ticket.TotalAPayer); 
+    }
+
+    [Fact]
+    public void GenererTicket_ClientStagiaire_Applique10EurosDeReduction()
+    {
+        // Arrange
+        var client = new Client(TypeClient.Stagiaire);
+        var repas = new Repas();
+        repas.AjouterProduit(new Produit("Plat", TypeProduit.Plat)); // 6€
+        repas.AjouterProduit(new Produit("Petite Salade", TypeProduit.PetiteSalade)); // 4€
+        repas.AjouterProduit(new Produit("Boisson", TypeProduit.Boisson)); // 1€
+        var caisse = new Caisse();
+
+        // Act
+        Ticket ticket = caisse.GenererTicket(client, repas);
+
+        // Assert
+        // 11€ - 10€ de prise en charge = 1€
+        Assert.Equal(1.00m, ticket.TotalAPayer); 
+    }
+
 }
