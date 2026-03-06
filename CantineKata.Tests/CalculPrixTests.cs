@@ -118,4 +118,26 @@ public class CalculPrixTests
         Assert.Equal(1.00m, ticket.TotalAPayer); 
     }
 
+    [Fact]
+    public void GenererTicket_VisiteurAvecFormuleComplete_Paye10Euros()
+    {
+        // Arrange
+        var client = new Client(TypeClient.Visiteur);
+        var repas = new Repas();
+        
+        repas.AjouterProduit(new Produit("Salade cesar", TypeProduit.Entree));    
+        repas.AjouterProduit(new Produit("Steak Frite de l'entrecote ", TypeProduit.Plat));      
+        repas.AjouterProduit(new Produit("Glace vanille ", TypeProduit.Dessert));    
+        repas.AjouterProduit(new Produit("Baguette tradition ", TypeProduit.Pain));    
+
+        var caisse = new Caisse();
+
+        // Act
+        Ticket ticket = caisse.GenererTicket(client, repas);
+
+        // Assert
+  
+        Assert.Equal(10.00m, ticket.TotalAPayer); 
+    }
+
 }
